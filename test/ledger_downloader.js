@@ -1,4 +1,5 @@
-var RippledLedgerDownloader = require(__dirname+'/../../lib/rippled/ledger_downloader.js');
+var assert = require('assert');
+var RippledLedgerDownloader = require(__dirname+'/../lib/ledger_downloader.js');
 
 describe('Rippled ledger download', function() {
 
@@ -8,7 +9,10 @@ describe('Rippled ledger download', function() {
 
   describe('Getting a ledger', function() {
     it('getLedger() should get a ledger', function(done) {
-      ledgerDownloader.getLedger(ledgerOptions, function(error, ledger){
+      var ledgerIndex = 7512081;
+      var expectedLedgerHash = 'A2EE8A908FDFCF69CB7C1FA37046FD45DCE1928C7AF1AD25708325B4FCA727C5';
+      ledgerDownloader.getLedger(ledgerIndex, function(error, ledger){
+        assert.strictEqual(ledger.hash, expectedLedgerHash);
         done();
       });
     });  
