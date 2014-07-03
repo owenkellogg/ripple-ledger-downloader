@@ -1,7 +1,7 @@
 var LedgerDownloader = require(__dirname+'/../lib/ledger_downloader.js');
 var _ = require('underscore-node');
 
-ledgerDownloader = new LedgerDownloader();
+var ledgerDownloader = new LedgerDownloader();
 var currentLedgerIndex;
 
 ledgerDownloader.getMostRecentlyClosedLedger(function(error, ledger) {
