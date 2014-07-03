@@ -31,6 +31,8 @@
     "deep-diff": "^0.1.4",
     "redis": "^0.10.1",
     "nano": "^5.8.0",
-    "node-dogstatsd": "0.0.5"
+    "node-dogstatsd": "0.0.5",
+    "underscore-node": "^0.1.2",
+    "sequelize": "^1.7.9"
   }
 }
