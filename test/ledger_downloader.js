@@ -16,6 +16,14 @@ describe('Rippled ledger download', function() {
         done();
       });
     });  
+
+    it('should get the most recently-closed ledger', function(done) {
+      ledgerDownloader.getMostRecentlyClosedLedger(function(error, ledger){
+        assert(ledger.hash);
+        console.log('LEDGER HASH', ledger.hash);
+        done();
+      });
+    });
   });
 
   describe('Getting a batch of ledgers', function() {
