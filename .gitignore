@@ -1,7 +1,6 @@
 *node_modules*
 *designdoc.json
 *.log
-*config.*
 !*config.*.example
 *.DS_Store
 deployment.environments.json
