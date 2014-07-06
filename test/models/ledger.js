@@ -1,5 +1,6 @@
 var assert = require('assert');
-var Ledger = require(__dirname+'/../../lib/models/ledger.js');
+var sequelize = require(__dirname+'/../../lib/database.js');
+var Ledger = sequelize.import(__dirname+'/../../lib/models/ledger.js');
 
 describe('Ledger Database Model', function() {
   it('should be able to be saved with only a ledgerIndex', function() {

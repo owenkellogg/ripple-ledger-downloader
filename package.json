@@ -33,6 +33,8 @@
     "nano": "^5.8.0",
     "node-dogstatsd": "0.0.5",
     "underscore-node": "^0.1.2",
-    "sequelize": "^1.7.9"
+    "sequelize": "^1.7.9",
+    "sequelize-sqlite": "^1.7.0",
+    "pg": "^3.3.0"
   }
 }
