@@ -1,10 +1,12 @@
 var LedgerDownloader = require(__dirname+'/../lib/ledger_downloader.js');
-var _ = require('underscore-node');
+var LedgerFormatter = require(__dirname+'/../lib/ledger_formatter.js');
+var Ledger = require(__dirname+'/../lib/models/ledger.js');
 
 var ledgerDownloader = new LedgerDownloader();
 var currentLedgerIndex;
 
 ledgerDownloader.getMostRecentlyClosedLedger(function(error, ledger) {
+  console.log('got most recently closed ledger');
   if (error) {
     console.log('error', error);
   } else {
@@ -15,6 +17,7 @@ ledgerDownloader.getMostRecentlyClosedLedger(function(error, ledger) {
 });
 
 function getLedgersRecursively(callback) {
+  console.log('getLedgersRecursively');
   ledgerDownloader.getLedger(currentLedgerIndex-1, function(error, ledger) {
     if (error) {
       console.log('error', error);
@@ -22,10 +25,21 @@ function getLedgersRecursively(callback) {
     } else {
       var ledgerFormatter = new LedgerFormatter(ledger);
       ledgerFormatter.logFormattedLedger();
-
       currentLedgerIndex = ledger.ledger_index;
-      callback(callback);
+      Ledger.create({
+        id: ledger.ledger_index,
+        hash: ledger.hash    
+      }).complete(function(){
+        callback(callback);
+      });
     }
   })
 };
+/*
+downloader = new LedgerDownloader(function(ledger, next) {
+  Ledger.createFromRippledFormat(ledger).complete(next);
+});
 
+downloader.downloadLedgers();
+
+*/
