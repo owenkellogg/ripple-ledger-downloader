@@ -7,10 +7,11 @@ describe('Ledger Database Model', function() {
   it('should be able to be saved with only an index', function(done) {
     var ledgerIndex = 7547150;
     ledger = Ledger.build({
-      id: ledgerIndex
+      id: ledgerIndex,
+      hash: 'someLedgerHash'
     });
     ledger.save().complete(function(error, ledger){
-      console.log('LEDGER', ledger.toJSON());
+      console.log('ERROR', error);
       assert(ledger.id);
       assert.strictEqual(ledger.id, ledgerIndex);
       done();

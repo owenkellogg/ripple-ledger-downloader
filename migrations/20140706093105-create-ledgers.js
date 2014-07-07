@@ -4,7 +4,11 @@ module.exports = {
       id: {
         type: DataTypes.INTEGER,
         primaryKey: true,
-        autoIncrement: true
+        autoIncrement: true,
+      },
+      hash: {
+        type: DataTypes.STRING,
+        allowNull: false
       },
       createdAt: {
         type: DataTypes.DATE
